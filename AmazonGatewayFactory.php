@@ -7,7 +7,6 @@ use Omnibus\Amazon\Action\RatingAction;
 use Omnibus\Amazon\Action\ShippingAction;
 use Omnibus\Amazon\Action\TrackingAction;
 use Omnibus\Config;
-use Omnibus\Exception\InvalidConfigException;
 use Omnibus\GatewayFactory;
 use Symfony\Component\HttpClient\HttpClient;
 
@@ -35,7 +34,7 @@ final class AmazonGatewayFactory extends GatewayFactory
             'business_id' => null,
             'sandbox' => false,
             'omnibus.api' => function (Config $c) {
-                $http = $this->http ?? (class_exists(HttpClient::class) ? HttpClient::create() : throw new InvalidConfigException('The "amazon" gateway needs symfony/http-client.'));
+                $http = $this->http ?? HttpClient::create();
 
                 return new Api($http, (string) $c['client_id'], (string) $c['client_secret'], (string) $c['refresh_token'], (string) $c['region'], $c['business_id'] ?: null, (bool) $c['sandbox']);
             },
