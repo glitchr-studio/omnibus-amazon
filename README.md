@@ -35,4 +35,4 @@ LWA client id and secret; authorising it on the Amazon Shipping account gives th
 Built from Amazon's published SP-API documentation and tested on recorded answers; not yet run
 against the sandbox: that needs the credentials above.
 
-License: LGPL-3.0-or-later.
+License: MIT since 2026-10-09; earlier versions remain published under LGPL-3.0-or-later.
